@@ -1361,6 +1361,22 @@
       // Get the guessed value from the clicked button
       // Use a conditional to compare the guess to the fact's answer
       // and add the "correct"/"incorrect" class as appropriate
+      for (const button of optionButtons) {
+        button.addEventListener("click", handleButtonClick);
+      }
+
+      function handleButtonClick(event) {
+        explanation.textContent = fact.explanation;
+        for (const button of optionButtons) {
+          disable(button);
+        }
+        const guessButton = event.target;
+        if (isCorrect(guessButton.value)) {
+          guessButton.classList.add("correct");
+        } else {
+          guessButton.classList.add("incorrect");
+        }
+      }
     </script>
   </body>
 </html>
